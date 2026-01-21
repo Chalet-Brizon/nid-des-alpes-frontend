@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Réservation – Le Nid des Cimes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+body{font-family:Arial;background:#f4f6f4;margin:0}
+header{background:#2f6b3a;color:#fff;padding:20px;text-align:center}
+section{max-width:900px;margin:auto;padding:20px}
+.card{background:#fff;padding:20px;border-radius:14px;margin-bottom:20px}
+h3{color:#2f6b3a;margin-top:0}
+input,button{width:100%;padding:10px;margin:6px 0}
+button{background:#2f6b3a;color:#fff;border:none;border-radius:30px;font-size:16px;cursor:pointer}
+.option{border:1px solid #cce3d1;padding:12px;border-radius:10px;background:#f6fbf7;margin-top:10px}
+.price{font-size:22px;font-weight:bold;color:#2f6b3a}
+.small{font-size:13px;color:#555}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Réserver votre séjour</h1>
+</header>
+
+<div style="text-align:center;margin:10px">
+<a href="index.html">← Retour à l’accueil</a>
+</div>
+
+<section>
+
+<!-- DATES -->
+<div class="card">
+<h3>1️⃣ Dates</h3>
+<div id="calendar"></div>
+
+<label>Arrivée</label>
+<input id="start" type="date">
+
+<label>Départ</label>
+<input id="end" type="date">
+
+<p class="small">Minimum 2 nuits</p>
+</div>
+
+<!-- VOYAGEURS -->
+<div class="card">
+<h3>2️⃣ Voyageurs</h3>
+
+<label>Adultes (≥18 ans)</label>
+<input id="adults" type="number" min="1" max="4" value="2">
+
+<label>Enfants 8–17 ans</label>
+<input id="kids817" type="number" min="0" max="2" value="0">
+
+<label>Enfants &lt; 8 ans (gratuit)</label>
+<input id="kidsUnder8" type="number" min="0" max="3" value="0">
+
+<div class="option">
+<label>
+<input type="checkbox" id="baby">
+<strong>Lit bébé (-3 ans)</strong><br>
+1 bébé autorisé en plus (hors capacité)
+</label>
+</div>
+
+<p class="small">
+Base tarifaire : 2 adultes inclus<br>
++10 € / nuit (3ᵉ personne >8 ans)<br>
++20 € / nuit (4ᵉ personne >8 ans)
+</p>
+</div>
+
+<!-- OPTIONS -->
+<div class="card">
+<h3>3️⃣ Options</h3>
+
+<div class="option">
+<label>
+<input type="checkbox" id="linge">
+Pack linge – 10 € / séjour<br>
+2 jeux de draps • 1 housse • 2 serviettes
+</label>
+</div>
+
+<label>Serviettes supplémentaires (5 € / unité)</label>
+<input id="towels" type="number" min="0" max="4" value="0">
+</div>
+
+<!-- COORDONNÉES -->
+<div class="card">
+<h3>4️⃣ Coordonnées</h3>
+<input id="nom" placeholder="Nom" required>
+<input id="prenom" placeholder="Prénom" required>
+<input id="email" type="email" placeholder="Email" required>
+<input id="telephone" placeholder="Téléphone" required>
+</div>
+
+<!-- RÉCAP -->
+<div class="card">
+<h3>5️⃣ Récapitulatif</h3>
+
+<p>Prix séjour : <strong><span id="price">0</span> €</strong></p>
+
+<p>Taxe de séjour : <strong><span id="taxe">0</span> €</strong><br>
+<span class="small">1,50 € / nuit / adulte (+18 ans)</span>
+</p>
+
+<p class="price">Total : <span id="total">0</span> €</p>
+
+<div class="option">
+<strong>Caution bancaire – 1000 €</strong><br>
+Aucun débit aujourd’hui.<br>
+Un débit partiel ou total pourra être effectué uniquement après le séjour.
+</div>
+
+<label>
+<input type="checkbox" id="acceptCaution">
+J’accepte la caution bancaire
+</label>
+
+<button id="payBtn">🔒 Confirmer et payer</button>
+</div>
+
+</section>
+
+<script>
+/* ===========================
+   CALENDRIER
+=========================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const cal = new FullCalendar.Calendar(
+    document.getElementById("calendar"),
+    {
+      locale: "fr",
+      selectable: true,
+      events: "https://TON-BACKEND.onrender.com/api/bookings",
+      select(info) {
+        const nights = (info.end - info.start) / 86400000;
+        if (nights < 2) {
+          alert("Minimum 2 nuits");
+          return;
+        }
+        start.value = info.startStr;
+        end.value = info.endStr;
+        calculate();
+      }
+    }
+  );
+  cal.render();
+});
+
+/* ===========================
+   CALCUL TARIF
+=========================== */
+function calculate() {
+  if (!start.value || !end.value) return;
+
+  const nights = (new Date(end.value) - new Date(start.value)) / 86400000;
+
+  let adultsV = +adults.value;
+  let kids817V = +kids817.value;
+  let kidsU8V = +kidsUnder8.value;
+
+  let occupants = adultsV + kids817V + kidsU8V;
+
+  if (!baby.checked && occupants > 4) {
+    alert("Capacité maximale 4 personnes");
+    adults.value = 2;
+    kids817.value = 0;
+    kidsUnder8.value = 0;
+    return;
+  }
+
+  let total = nights * 70;
+
+  if (adultsV + kids817V >= 3) total += 10 * nights;
+  if (adultsV + kids817V >= 4) total += 20 * nights;
+
+  if (linge.checked) total += 10;
+  total += towels.value * 5;
+
+  if (nights >= 30) total *= 0.6;
+  else if (nights >= 7) total *= 0.82;
+  else total *= 0.92;
+
+  const taxe = adultsV * nights * 1.5;
+
+  price.innerText = total.toFixed(2);
+  taxeSpan.innerText = taxe.toFixed(2);
+  totalSpan.innerText = (total + taxe).toFixed(2);
+}
+
+const taxeSpan = document.getElementById("taxe");
+const totalSpan = document.getElementById("total");
+
+[start, end, adults, kids817, kidsUnder8, baby, linge, towels]
+  .forEach(e => e.addEventListener("change", calculate));
+
+/* ===========================
+   STRIPE
+=========================== */
+const stripe = Stripe("pk_test_51SoO4ICnhuUC6TuPqxs9ZlD8wThm3VsJfiCEAHJgqT3TSvp0Xj9Gl17R1umpB136Gp6iekAU80EJ4iFHNCV6TAs600EGsQT8XC");
+
+payBtn.onclick = async () => {
+  if (!acceptCaution.checked) {
+    alert("Veuillez accepter la caution");
+    return;
+  }
+
+  if (!nom.value || !prenom.value || !email.value || !telephone.value) {
+    alert("Veuillez remplir toutes les informations");
+    return;
+  }
+
+  const total = parseFloat(totalSpan.innerText);
+  if (!total || total <= 0) {
+    alert("Montant invalide");
+    return;
+  }
+
+  const res = await fetch("https://TON-BACKEND.onrender.com/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      total,
+      email: email.value
+    })
+  }).then(r => r.json());
+
+  if (res.url) window.location.href = res.url;
+  else alert("Erreur paiement");
+};
+</script>
+
+</body>
+</html>

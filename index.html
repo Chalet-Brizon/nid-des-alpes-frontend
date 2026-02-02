@@ -1,417 +1,721 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Le Nid des Cimes – Chalet à Brizon</title>
+  <meta charset="UTF-8">
+  <title>Le Nid des Alpes – Chalet Savoyard à Brizon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-  
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#fffdf8;
-  color:#122;
-  line-height:1.7;
-}
-header{
-  background:#e7efe8;
-  padding:50px 20px;
-  text-align:center;
-}
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:50px 20px;
-}
-h2{margin-top:0}
+  <!-- SEO -->
+  <meta name="description" content="Le Nid des Alpes, chalet savoyard chaleureux à 1000 m d’altitude : vue panoramique, mer de nuages, calme absolu. Idéal pour séjours, ski, randonnées, télétravail et déplacements professionnels.">
+  <meta name="keywords" content="chalet Brizon, location montagne, Haute-Savoie, Le Nid des Alpes, mer de nuages, ski, Annecy, Genève, Chamonix, refuge, cocooning, nature">
+  <meta name="robots" content="index,follow">
 
-/* THEME */
-.theme{margin-bottom:70px}
-.theme-hero{
-  height:400px;
-  border-radius:20px;
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:flex-end;
-  cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-.theme-title{
-  background:rgba(0,0,0,.6);
-  color:white;
-  padding:25px;
-  font-size:1.8em;
-  width:100%;
-  border-radius:0 0 20px 20px;
-}
-.theme-content{display:none;margin-top:30px}
+  <!-- Open Graph -->
+  <meta property="og:title" content="Le Nid des Alpes – Chalet Savoyard à Brizon">
+  <meta property="og:description" content="Un cocon de montagne perché à 1000 m d’altitude, entre lac, forêts et mer de nuages.">
+  <meta property="og:type" content="website">
 
-/* GALLERY */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;
-  margin-top:30px;
-}
-.gallery img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  border-radius:15px;
-  cursor:pointer;
-  box-shadow:0 6px 15px rgba(0,0,0,.25);
-}
+  <style>
+    /* ------------------------------
+       STYLE GLOBAL PREMIUM
+    ------------------------------ */
+    body{
+      margin:0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background:#f8f7f3;
+      color:#1a1f1c;
+      line-height:1.7;
+    }
 
-/* LIGHTBOX */
-.lightbox{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-.lightbox img{
-  max-width:90%;
-  max-height:85%;
-}
-.lightbox .close{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:40px;
-  color:white;
-  cursor:pointer;
-}
-.lightbox .nav{
-  position:absolute;
-  top:50%;
-  font-size:60px;
-  color:white;
-  cursor:pointer;
-}
-.prev{left:30px}
-.next{right:30px}
+    h1,h2,h3{
+      font-family:"Segoe UI Semibold", Arial, sans-serif;
+      letter-spacing:0.5px;
+    }
 
-/* BOUTON RESERVATION */
-.btn-reserver{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#2f6b3a;
-  color:white;
-  padding:16px 28px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:bold;
-  box-shadow:0 8px 25px rgba(0,0,0,.4);
-}
+    .soft-shadow{
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+    }
 
-/* MOBILE */
-@media(max-width:700px){
-  .theme-hero{height:260px}
-  .theme-title{font-size:1.4em}
-}
-</style>
+    /* ------------------------------
+       HEADER PREMIUM
+    ------------------------------ */
+    header{
+      background:linear-gradient(135deg, #e8efe9, #dfe8e2);
+      padding:60px 20px;
+      text-align:center;
+      border-bottom:1px solid #d0d7d2;
+    }
+    header h1{
+      margin:0;
+      font-size:2.6rem;
+      color:#2f4635;
+    }
+    header p{
+      margin-top:12px;
+      font-size:1.15rem;
+      color:#4a5a50;
+    }
+
+    /* ------------------------------
+       HERO VISUEL IMMERSIF
+    ------------------------------ */
+    .hero{
+      height:420px;
+      background-image:url('images/vue/merdenuage1.jpg');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      border-radius:0 0 25px 25px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.05));
+    }
+
+    .hero-text{
+      position:relative;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+      font-size:1.8rem;
+      font-weight:bold;
+      z-index:2;
+      max-width:900px;
+      line-height:1.4;
+    }
+
+    /* ------------------------------
+       SECTIONS
+    ------------------------------ */
+    main{
+      display:block;
+    }
+
+    section{
+      max-width:1200px;
+      margin:auto;
+      padding:55px 20px;
+    }
+
+    h2{
+      margin-top:0;
+      font-size:1.9rem;
+      color:#2f4635;
+    }
+
+    h3{
+      margin-top:25px;
+      font-size:1.35rem;
+      color:#2f4635;
+    }
+
+    /* ------------------------------
+       THEMES
+    ------------------------------ */
+    .theme{
+      margin-bottom:70px;
+    }
+
+    .theme-hero{
+      height:380px;
+      border-radius:20px;
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:flex-end;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      transition:transform .25s;
+    }
+
+    .theme-hero:hover{
+      transform:scale(1.02);
+    }
+
+    .theme-title{
+      background:rgba(0,0,0,.55);
+      color:white;
+      padding:25px;
+      font-size:1.7em;
+      width:100%;
+      border-radius:0 0 20px 20px;
+    }
+
+    .theme-content{
+      display:none;
+      margin-top:30px;
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    /* ------------------------------
+       GALERIE
+    ------------------------------ */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:20px;
+      margin-top:30px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:15px;
+      cursor:pointer;
+      box-shadow:0 6px 15px rgba(0,0,0,.25);
+      transition:transform .25s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    /* ------------------------------
+       BOUTON RÉSERVER
+    ------------------------------ */
+    .btn-reserver{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      background:#2f6b3a;
+      color:white;
+      padding:16px 28px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+      box-shadow:0 8px 25px rgba(0,0,0,.4);
+      z-index:10000;
+      transition:background .2s;
+    }
+
+    .btn-reserver:hover{
+      background:#265a31;
+    }
+
+    /* ------------------------------
+       MOBILE
+    ------------------------------ */
+    @media(max-width:700px){
+      .theme-hero{height:260px}
+      .theme-title{font-size:1.4em}
+      header h1{font-size:1.9rem}
+      .hero{height:300px}
+      .hero-text{font-size:1.4rem}
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<h1>Le Nid des Cimes</h1>
-<p>Chalet d’exception à Brizon (74130) – Entre lac et montagnes</p>
+<header role="banner">
+  <h1>Le Nid des Alpes</h1>
+  <p>Un cocon savoyard perché à 1000 m d’altitude, entre lac, forêts et mer de nuages</p>
 </header>
 
-<section>
-<h2>Un petit Chalet perché à 1000 mètres d’altitude, au-dessus des nuages, au cœur d’une nature préservée et changeant avec des panoramas a couper le souffle aussi bien en été qu'en hivers.</h2>
-<p>
-Bienvenue au Nid des Cimes, un chalet savoyard chaleureux niché à 1000 mètres d’altitude, offrant une vue apaisante sur la vallée souvent enveloppée de nuages. Ici, le temps ralentit. Le calme, la nature luxuriante et l’air pur de la montagne vous invitent à la détente, tout en restant idéalement situé à proximité des plus beaux sites de Haute-Savoie. Que vous recherchiez un séjour romantique, une parenthèse en famille ou un refuge pour vous ressourcer lors de vos deplacements professionnels, Le Nid des Cimes est conçu pour vous offrir confort, sérénité et intimité.
-</p>
+<div class="hero">
+  <div class="hero-text">
+    Un refuge chaleureux au-dessus de la vallée, où chaque lever de soleil transforme votre séjour en parenthèse enchantée.
+  </div>
+</div>
 
-<p>
-Idéalement situé au cœur de la Haute-Savoie, le chalet permet de rayonner
-facilement entre Annecy, Genève et Chamonix tout en profitant d’un refuge
-paisible, loin de l’agitation.
-</p>
+<main>
+<!-- INTRODUCTION -->
+<section aria-labelledby="intro-title">
+  <h2 id="intro-title">Un refuge chaleureux au cœur des Alpes</h2>
+
+  <p>
+    Bienvenue au <strong>Nid des Alpes</strong>, un chalet savoyard authentique niché à 
+    <strong>1000 mètres d’altitude</strong>, où le bois, la lumière naturelle et le calme composent une atmosphère 
+    douce et apaisante.
+  </p>
+
+  <p>
+    Ici, chaque matin offre un spectacle unique : <strong>mer de nuages</strong>, 
+    <strong>levers de soleil dorés</strong>, sommets qui se dévoilent lentement…  
+    Un décor naturel qui invite à ralentir, respirer, se reconnecter.
+  </p>
+
+  <p>
+    Situé entre <strong>Annecy</strong>, <strong>Genève</strong> et <strong>Chamonix</strong>, le chalet est le point de départ idéal 
+    pour explorer la Haute‑Savoie tout en profitant d’un <strong>refuge intime et cocooning</strong>.
+  </p>
 </section>
 
-<!-- VUE -->
-<section class="theme">
-<div class="theme-hero" style="background-image:url('images/vue/merdenuage1.jpg')" onclick="toggle('vue')">
-<div class="theme-title">🌄 Vue & Atmosphère</div>
-</div>
-<div id="vue" class="theme-content">
-<p>
-Les levers de soleil au-dessus de la mer de nuages, les couchers de soleil
-embrasant les sommets et les nuits étoilées font du Nid des Cimes
-un lieu hors du temps.
-</p>
-<div class="gallery" data-theme="vue">
-<img src="images/vue/merdenuage1.jpg">
-<img src="images/vue/merdenuage2.jpg">
-<img src="images/vue/vueleverdesoleil.jpg">
-<img src="images/vue/vue6.jpg">
-<img src="images/vue/vue8.jpg">
-<img src="images/vue/vuearcenciel.jpg">
-<img src="images/vue/vueneige.jpg">
-</div>
-</div>
+<!-- VUE & ATMOSPHÈRE -->
+<section class="theme" aria-labelledby="vue-title">
+  <div class="theme-hero" style="background-image:url('images/vue/merdenuage1.jpg')" onclick="toggle('vue')" role="button" aria-expanded="false" aria-controls="vue">
+    <div class="theme-title" id="vue-title">🌄 Vue & Atmosphère</div>
+  </div>
+
+  <div id="vue" class="theme-content">
+    <p>
+      Ici, la nature est un spectacle permanent : <strong>mer de nuages</strong> au réveil, 
+      <strong>couchers de soleil flamboyants</strong>, nuits d’un noir profond où scintillent les étoiles.  
+      Une atmosphère rare, presque suspendue, qui transforme chaque séjour en parenthèse enchantée.
+    </p>
+
+    <div class="gallery" data-theme="vue">
+      <img src="images/vue/merdenuage1.jpg" alt="Vue sur la mer de nuages" loading="lazy">
+      <img src="images/vue/merdenuage2.jpg" alt="Panorama sur la vallée" loading="lazy">
+      <img src="images/vue/vueleverdesoleil.jpg" alt="Lever de soleil en montagne" loading="lazy">
+      <img src="images/vue/vue6.jpg" alt="Vue dégagée sur les sommets" loading="lazy">
+      <img src="images/vue/vue8.jpg" alt="Paysage de montagne" loading="lazy">
+      <img src="images/vue/vuearcenciel.jpg" alt="Arc-en-ciel sur la vallée" loading="lazy">
+      <img src="images/vue/vueneige.jpg" alt="Vue enneigée" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <!-- LOGEMENT -->
-<section class="theme">
-<div class="theme-hero" style="background-image:url('images/logement/vuebalcon4.jpg')" onclick="toggle('logement')">
-<div class="theme-title">🏡 Le logement</div>
-</div>
-<div id="logement" class="theme-content">
-<p>
-Le chalet accueille jusqu’à 4 voyageurs maximun incluant les enfants dans un cadre chaleureux,
-authentique et parfaitement équipé.
-</p>
-<ul>
-<li>Chambre avec literie 140×190 de qualité, dressing, bureau ainsi qu'un lit bébé (draps et couverture non fourni pour se couchage) </li>
-<li>Un espace de vie chaleureux et lumineux incluant un deuxieme couchage de type BZ de 140x190 très confortable</li>
-<li>Cuisine parfaitement équipée et aménagée</li>
-<li>Salle d’eau moderne</li>
-<li>Balcon avec vue dégagée</li>
-<li>Un accès facile en toute saison, y compris en hiver</li>
-</ul>
-<p>
-<strong>Information importante – période hivernale :</strong> De novembre à mars, l’accès au stationnement situé à proximité immédiate du logement peut ne pas être praticable selon les conditions météorologiques. Il est cependant facile de stationner à proximité, notamment autour de l’église du village ou du city stade, à moins de 3 minutes à pied.
+<section class="theme" aria-labelledby="logement-title">
+  <div class="theme-hero" style="background-image:url('images/logement/vuebalcon4.jpg')" onclick="toggle('logement')" role="button" aria-expanded="false" aria-controls="logement">
+    <div class="theme-title" id="logement-title">🏡 Le logement</div>
+  </div>
 
-Tout a été pensé pour que vous vous sentiez comme chez vous.
-</p>
-<div class="gallery" data-theme="logement">
-<img src="images/logement/vuebalcon4.jpg">
-<img src="images/logement/escalierentree.jpg">
-<img src="images/logement/sejour1.jpg">
-<img src="images/logement/sejour2.jpg">
-<img src="images/logement/sejour3.jpg">
-<img src="images/logement/coincuisine1.jpg">
-<img src="images/logement/cuisine3.jpg">
-<img src="images/logement/accesoircuisine.jpg">
-<img src="images/logement/cointv.jpg">
-<img src="images/logement/vuebalcon3.jpg">
-<img src="images/logement/vuebalcon2.jpg">
-<img src="images/logement/vuebalcondroit.jpg">
-<img src="images/logement/chambre1.jpg">
-<img src="images/logement/chambre2.jpg">
-<img src="images/logement/chambre5.jpg">
-<img src="images/logement/chambre4.jpg">
-<img src="images/logement/vueLavabomoyen.jpg">
-<img src="images/logement/lavabo2.jpg">
-<img src="images/logement/douche2.jpg">
-</div>
-</div>
+  <div id="logement" class="theme-content">
+    <p>
+      Le Nid des Alpes est un véritable <strong>cocon de montagne</strong> où le bois, la lumière naturelle et les matières douces créent une atmosphère chaleureuse et apaisante. 
+      Le logement accueille confortablement <strong>jusqu’à 4 voyageurs</strong> (et un bébé), dans un espace pensé pour le repos, la simplicité et le bien‑être.
+    </p>
+
+    <p>
+      La chambre, douillette et calme, offre une literie de qualité, un dressing et un espace bureau idéal pour lire, travailler ou simplement profiter du silence de la montagne. 
+      Le séjour lumineux, avec son couchage supplémentaire, invite à des soirées cocooning face à la vallée.
+    </p>
+
+    <p>
+      La cuisine est entièrement équipée pour préparer vos repas savoyards, et le balcon privatif offre une vue dégagée sur les sommets — un endroit parfait pour savourer un café au lever du soleil.
+    </p>
+
+    <ul>
+      <li>Chambre cosy avec literie 140×190, dressing, bureau et lit bébé (draps et surmatelat NON FOURNIS)</li>
+      <li>Espace de vie lumineux avec couchage BZ 140×190</li>
+      <li>Cuisine entièrement équipée (four, plaques, micro‑ondes, cafetière, ustensiles…)</li>
+      <li>Salle d’eau moderne avec douche spacieuse</li>
+      <li>Balcon privatif avec vue panoramique</li>
+    </ul>
+
+    <div class="gallery" data-theme="logement">
+      <img src="images/logement/vuebalcon4.jpg" alt="Balcon avec vue" loading="lazy">
+      <img src="images/logement/escalierentree.jpg" alt="Entrée du chalet" loading="lazy">
+      <img src="images/logement/sejour1.jpg" alt="Séjour du chalet" loading="lazy">
+      <img src="images/logement/sejour2.jpg" alt="Salon confortable" loading="lazy">
+      <img src="images/logement/sejour3.jpg" alt="Pièce de vie" loading="lazy">
+      <img src="images/logement/coincuisine1.jpg" alt="Coin cuisine" loading="lazy">
+      <img src="images/logement/cuisine3.jpg" alt="Cuisine équipée" loading="lazy">
+      <img src="images/logement/accesoircuisine.jpg" alt="Accessoires de cuisine" loading="lazy">
+      <img src="images/logement/cointv.jpg" alt="Coin TV" loading="lazy">
+      <img src="images/logement/vuebalcon3.jpg" alt="Vue depuis le balcon" loading="lazy">
+      <img src="images/logement/chambre1.jpg" alt="Chambre principale" loading="lazy">
+      <img src="images/logement/douche2.jpg" alt="Salle d’eau" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <!-- LOCALISATION -->
-<section class="theme">
-<div class="theme-hero" style="background-image:url('images/chalet/facade.jpg')" onclick="toggle('localisation')">
-<div class="theme-title">📍 Localisation idéale</div>
-</div>
-<div id="localisation" class="theme-content">
-<p>
-Situé à Brizon (74130), le chalet bénéficie d’un emplacement stratégique
-au cœur de la Haute-Savoie.
-</p>
-<ul>
-<li>Annecy - 40 min</li>
-<li>Genève - 45 min</li>
-<li>Chamonix - 45 min</li>
-<li>Rochexpo - 25 minutes</li>
-<li>Palexpo - 45 minutes</li>
-<li>Grand-Bornand, La Clusaz, Morzine, Les Gets – moins de 45 min</li>
-<li>Stations de ski, sentiers de randonnée, lacs de baignade et cascades à proximité immédiate</li>
-</ul>
-<p>
-  Un parfait équilibre entre isolement paisible et accessibilité.
-<p>
+<section class="theme" aria-labelledby="localisation-title">
+  <div class="theme-hero" style="background-image:url('images/chalet/facade.jpg')" onclick="toggle('localisation')" role="button" aria-expanded="false" aria-controls="localisation">
+    <div class="theme-title" id="localisation-title">📍 Localisation idéale</div>
+  </div>
 
-</p>
-<strong>Hiver :</strong> pneus neige obligatoires, chaînes fortement recommandées.
-</p>
-<div class="gallery" data-theme="logement">
-<img src="images/chalet/facade.jpg">
-<img src="images/chalet/facadeebtreechalet.jpg">
-<img src="images/chalet/parking1.jpg">
-<img src="images/chalet/parking2.jpg">
-<img src="images/chalet/parkineneige.jpg">
+  <div id="localisation" class="theme-content">
+    <p>
+      Situé à <strong>Brizon (74130)</strong>, le chalet profite d’un emplacement rare : un hameau calme, en pleine nature, mais à proximité immédiate des grands sites alpins.
+    </p>
 
+    <p>
+      Vous êtes au cœur de la Haute‑Savoie, entre lacs, forêts, alpages et stations renommées.
+    </p>
 
-</div>
+    <ul>
+      <li>Annecy – 40 min</li>
+      <li>Genève – 45 min</li>
+      <li>Chamonix – 45 min</li>
+      <li>Rochexpo – 25 min</li>
+      <li>Stations de ski à moins de 45 min</li>
+    </ul>
+
+    <h3>❄️ Accès en hiver</h3>
+
+    <p>
+      De novembre à mars, selon les épisodes neigeux, l’accès direct au parking du chalet peut être temporairement difficile. 
+      Dans ces périodes, <strong>les pneus neige sont obligatoires</strong> et <strong>les chaînes recommandées</strong>.
+    </p>
+
+    <p>
+      Pas d’inquiétude : des solutions de stationnement sont disponibles à moins de <strong>3 minutes à pied</strong>, 
+      du côté du <strong>city-stade</strong> ou de l’<strong>église du village</strong>.  
+      Les axes principaux, eux, sont <strong>toujours parfaitement dégagés et praticables</strong> grâce au déneigement communal.
+    </p>
+
+    <p>
+      Le logement convient également parfaitement aux <strong>travailleurs locaux</strong> ou aux personnes en déplacement professionnel 
+      dans la région, offrant calme, confort et un environnement propice au repos après la journée.
+    </p>
+
+    <div class="gallery">
+      <img src="images/chalet/facade.jpg" alt="Façade du chalet" loading="lazy">
+      <img src="images/chalet/facadeebtreechalet.jpg" alt="Chalet et environnement" loading="lazy">
+      <img src="images/chalet/parking1.jpg" alt="Parking à proximité" loading="lazy">
+      <img src="images/chalet/parking2.jpg" alt="Accès au stationnement" loading="lazy">
+      <img src="images/chalet/parkineneige.jpg" alt="Parking en hiver" loading="lazy">
+    </div>
+  </div>
 </section>
-
 <!-- ENVIRONNEMENT -->
-<section class="theme">
-<div class="theme-hero" style="background-image:url('images/environnement/ancienneprisonannecy1.jpg')" onclick="toggle('env')">
-<div class="theme-title">🌿 Environnement & Activités</div>
-</div>
-<div id="env" class="theme-content">
-<p>
-Le Nid des Cimes est au cœur d’un territoire d’exception, entre lacs,
-montagnes et stations alpines renommées.
-</p>
-<p>
-À proximité : le lac d’Annecy et sa vieille ville, le lac Léman et Genève,
-le massif du Mont-Blanc à Chamonix, ainsi que les stations du Grand-Bornand,
-La Clusaz, Morzine et Les Gets.
-</p>
-<p>
-Activités été / hiver : randonnées panoramiques, ski alpin et nordique,
-parapente, escalade, VTT, baignade, découverte de cascades et des lacs
-des Îlettes à Passy.
-</p>
-<div class="gallery" data-theme="env">
-<img src="images/environnement/ancienneprisonannecy.jpg">
-<img src="images/environnement/parapente2.jpg">
-<img src="images/environnement/parapente4.jpg">
-<img src="images/environnement/rafting2.jpeg">
-<img src="images/environnement/rafting5.jpeg">
-<img src="images/environnement/vuepontonlacannecy.jpg">
-<img src="images/environnement/lac.jpg">
-</div>
-</div>
+<section class="theme" aria-labelledby="env-title">
+  <div class="theme-hero" style="background-image:url('images/environnement/vuepontonlacannecy.jpg')" onclick="toggle('env')" role="button" aria-expanded="false" aria-controls="env">
+    <div class="theme-title" id="env-title">🌿 Environnement & Activités</div>
+  </div>
+
+  <div id="env" class="theme-content">
+    <p>
+      Le Nid des Alpes se trouve au cœur d’un territoire d’une richesse exceptionnelle : lacs turquoise, sommets mythiques, villages savoyards, forêts profondes et panoramas à couper le souffle.
+    </p>
+
+    <h3>🌞 Été</h3>
+    <ul>
+      <li><strong>Annecy :</strong> baignade, vieille ville, parapente, vélo autour du lac</li>
+      <li><strong>Genève :</strong> croisière sur le Léman, musées, jardin botanique</li>
+      <li><strong>Chamonix :</strong> Aiguille du Midi, Mer de Glace, randonnées panoramiques</li>
+      <li><strong>Grand-Bornand & La Clusaz :</strong> via ferrata, VTT, alpages</li>
+      <li><strong>Morzine & Les Gets :</strong> bike park, lac de baignade</li>
+      <li><strong>Yvoire, Talloires, Évian :</strong> villages lacustres, gastronomie</li>
+    </ul>
+
+    <h3>❄️ Hiver</h3>
+    <ul>
+      <li><strong>Chamonix :</strong> ski alpin, freeride, ambiance haute montagne</li>
+      <li><strong>La Clusaz & Grand-Bornand :</strong> ski familial, marchés de Noël</li>
+      <li><strong>Morzine & Les Gets :</strong> domaine des Portes du Soleil</li>
+      <li><strong>Annecy :</strong> ville sous la neige, restaurants savoyards</li>
+      <li><strong>Thermes :</strong> détente à Évian, Thonon, Saint‑Gervais</li>
+    </ul>
+
+    <h3>🍽️ Gastronomie & terroir</h3>
+    <p>
+      Raclette, fondue, tartiflette, fromages fermiers, vins de Savoie…  
+      La région est un paradis pour les gourmets.  
+      Découvrez les marchés locaux, les fermes d’alpage et les auberges typiques.
+    </p>
+
+    <div class="gallery" data-theme="env">
+      <img src="images/environnement/ancienneprisonannecy.jpg" alt="Vieille ville d’Annecy" loading="lazy">
+      <img src="images/environnement/vuepontonlacannecy.jpg" alt="Ponton sur le lac" loading="lazy">
+      <img src="images/environnement/parapente2.jpg" alt="Parapente au-dessus du lac" loading="lazy">
+      <img src="images/environnement/rafting2.jpeg" alt="Rafting en rivière" loading="lazy">
+      <img src="images/environnement/lac.jpg" alt="Lac de montagne" loading="lazy">
+      
+  </div>
 </section>
-<!-- RÉSERVATION -->
-<section id="reservation">
-  <h2>Réservation simple et sécurisée</h2>
+
+<!-- EXPÉRIENCE IMMERSIVE -->
+<section aria-labelledby="experience-title">
+  <h2 id="experience-title">✨ L’expérience Le Nid des Alpes</h2>
 
   <p>
-    La réservation se fait en toute simplicité via notre calendrier en ligne.
+    Séjourner au Nid des Alpes, c’est vivre une expérience unique, entre nature, confort et sérénité.
   </p>
 
   <ul>
-    <li>Paiement sécurisé par carte bancaire</li>
-    <li>Caution par empreinte bancaire</li>
-    <li>Confirmation immédiate par email</li>
-    <li>Messages automatiques avant l’arrivée et au départ</li>
+    <li>Se réveiller face à la <strong>la montagne</strong></li>
+    <li>Prendre son café sur le balcon avec une <strong>vue panoramique</strong></li>
+    <li>Respirer l’air pur des montagnes</li>
+    <li>Profiter du silence, loin de l’agitation</li>
+    <li>Observer les étoiles depuis un hameau préservé</li>
+    <li>Se ressourcer dans un <strong>cocon chaleureux</strong> en bois</li>
+    <li>Travailler au calme avec un <strong>espace bureau</strong> et une connexion fiable</li>
+  </ul>
+
+  <p>
+    Que vous soyez en vacances, en télétravail ou en déplacement professionnel, Le Nid des Alpes offre un cadre idéal pour se recentrer, se reposer et profiter pleinement de la montagne.
+  </p>
+</section>
+
+<!-- ÉQUIPEMENTS PREMIUM -->
+<section aria-labelledby="equipements-title">
+  <h2 id="equipements-title">🛏️ Équipements premium</h2>
+
+  <p>
+    Tout est pensé pour votre confort, votre autonomie et votre bien‑être.
+  </p>
+
+  <ul>
+    <li>Literie de qualité + lit bébé (draps et surmatelats Non FOURNIS)</li>
+    <li>Cuisine équipée (four, plaques, micro‑ondes, cafetière, ustensiles…)</li>
+    <li>Chauffage performant</li>
+    <li>Balcon privatif avec vue panoramique</li>
+    <li>Wi‑Fi fiable pour télétravail</li>
+    <li>TV écran plat</li>
+    <li>Parking (selon conditions neigeuses)</li>
+    <li>Accès autonome possible via boîte à clé</li>
+    <li>Kit linge disponible (10 €) + serviettes supplémentaires (5 €)</li>
   </ul>
 </section>
 
-<!-- RÈGLES ET CONDITIONS -->
-<section id="conditions">
- <h2>Règles et conditions</h2>
+<!-- CONDITIONS DU LOGEMENT -->
+<section id="conditions-logement" aria-labelledby="conditions-title" style="margin-top:40px;">
+  <h2 id="conditions-title">🛎️ Conditions du logement</h2>
 
-<ul>
-  <li>Séjour minimum : 2 nuits</li>
-  <li>Tarif dégressif à partir de 6 nuits et de 30 nuits</li>
-  <li>Le linge de maison (draps et serviettes) n'est pas inclue, mais nous proposons pour 10€ un kit linge de maison comprenant les deux parures de draps, une housse de couette, x2 serviettes de bain. Toute serviette de bain suplemntaire sera facturer 5€ </li>
-  <li>Caution : empreinte bancaire de 1000 € non encaissée</li>
-  <li>Heure d’arrivée : 16h00</li>
-  <li>Heure de départ : 10h00</li>
-  <li>
-    Sous réserve des réservations précédentes ou suivantes,
-    une flexibilité sur les horaires est possible avec remise des clés
-    via une boîte à clés sécurisée
-  </li>
-  <li>
-    Annulation :
-    <ul>
-      <li>Séjour de 2 à 5 nuits : annulation gratuite jusqu’à 5 jours avant l’arrivée</li>
-      <li>Séjour d’une semaine et plus : annulation gratuite jusqu’à 3 semaines avant l’arrivée</li>
-    </ul>
-  </li>
-  <li>LOGEMENT ET ETABLISSEMENT NON-FUMEUR</li>
-  <li>LES FETES ET EVENEMENTS SONT STRICTEMENT INTERDITES</li>
-  <li>Le calme doit etre repecter de 19h00 a 9h00</li>
-  <li>Les animaux ne sont pas acceptés</li>
-</ul>
+  <div style="background:#f8f8f8;padding:20px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);line-height:1.6;color:#444;">
+    
+    <p><strong>🎉 Fêtes et soirées :</strong> strictement interdites afin de préserver le calme du hameau.</p>
 
-  </p>
+    <p><strong>🚭 Logement non‑fumeur :</strong> il est interdit de fumer à l’intérieur du chalet. Merci d’utiliser les espaces extérieurs si nécessaire.</p>
+
+    <p><strong>⏰ Horaires :</strong><br>
+      • <strong>Arrivée :</strong> à partir de 16h00<br>
+      • <strong>Départ :</strong> avant 10h00
+    </p>
+
+    <p><strong>🚗 Stationnement :</strong> merci de respecter la chaîne du parking si elle est en place. En hiver, l’accès peut nécessiter pneus neige ou chaînes.</p>
+
+    <p><strong>🔥 Chauffage :</strong> les convecteurs sont réglés pour assurer une température confortable et constante. 
+    Merci d’adopter une utilisation raisonnable et de ne pas pousser les molettes au maximum.</p>
+
+    <p><strong>🚰 Fosse toutes eaux :</strong> merci de ne jeter que du papier toilette dans les WC. 
+    Les lingettes (même biodégradables), protections hygiéniques, essuie‑tout et autres déchets doivent être jetés dans la poubelle.</p>
+
+    <p><strong>👶 Capacité :</strong> 4 personnes + 1 bébé maximum.</p>
+
+    <p><strong>⚡ Sécurité électrique :</strong> il est interdit de recharger un véhicule électrique via les prises du logement.</p>
+
+    <p><strong>🌿 Éco‑responsabilité :</strong> merci d’utiliser l’eau chaude et le chauffage de manière raisonnable afin de préserver le confort du logement et l’environnement.</p>
+
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact et échanges</h2>
+
+<!-- ACCÈS & NEIGE DÉDIÉ -->
+<section aria-labelledby="acces-title">
+  <h2 id="acces-title">❄️ Accès & Neige</h2>
+
   <p>
-    Une question avant votre séjour ?
-    Nous restons disponibles pour échanger avec vous
-    avant, pendant et après votre réservation.  </p>
+    Le Nid des Alpes est situé à 1000 m d’altitude, dans un hameau calme et authentique.  
+    L’accès est simple et bien déneigé, mais certaines précisions sont utiles selon la saison.
+  </p>
 
-    <ul>📧 Contact : lenidsavoyard@gmail.com</li>
+  <h3>🚗 Accès en hiver</h3>
+  <p>
+    De novembre à mars, selon les épisodes neigeux, l’accès direct au parking du chalet peut être temporairement difficile.  
+    Dans ces périodes :
+  </p>
 
-    <ul>💬 Messagerie intégrée et réponses automatiques disponibles</li>
-      
+  <ul>
+    <li><strong>Pneus neige obligatoires</strong></li>
+    <li><strong>Chaînes recommandées</strong></li>
+    <li>Routes principales toujours <strong>parfaitement dégagées</strong></li>
+  </ul>
+
+  <p>
+    Pas d’inquiétude : des solutions de stationnement sont disponibles à moins de <strong>3 minutes à pied</strong>, 
+    du côté du <strong>city-stade</strong> ou de l’<strong>église du village</strong>.
+  </p>
+
+  <h3>🎿 Proximité des stations</h3>
+  <ul>
+    <li>Le Grand-Bornand – 35 min</li>
+    <li>La Clusaz – 40 min</li>
+    <li>Les Gets – 45 min</li>
+    <li>Morzine – 45 min</li>
+    <li>Chamonix – 45 min</li>
+  </ul>
+
+  <h3>🌍 Grandes villes proches</h3>
+  <ul>
+    <li>Annecy – 40 min</li>
+    <li>Genève – 45 min</li>
+    <li>Chamonix – 45 min</li>
+  </ul>
+
+  <p>
+    Que vous veniez pour skier, randonner, travailler ou simplement vous ressourcer, l’accès reste simple et sécurisé.
   </p>
 </section>
-<h2>Avis clients</h2>
-<div id="reviews"></div>
-<input id="name"><textarea id="text"></textarea>
-<button onclick="sendReview()">Envoyer</button>
+<!-- ASSISTANCE & AVIS -->
+<section id="assistance" aria-labelledby="assistance-title">
+  <h2 id="assistance-title">💬 Assistance & Avis clients</h2>
 
-<h2>Chat</h2>
-<input id="msg">
-<button onclick="sendMsg()">Envoyer</button>
-<div id="chat"></div>
+  <!-- Chatbot IA -->
+  <div style="margin-bottom:30px;text-align:center">
+    <button type="button"
+      style="background:#2f6b3a;color:white;border:none;padding:12px 24px;border-radius:30px;font-weight:bold;cursor:pointer;">
+      💬 Assistance instantanée
+    </button>
+    <p style="margin-top:10px;color:#555">
+      Posez vos questions, notre assistant intelligent vous répond en direct.
+    </p>
+  </div>
 
-<script>
-fetch("/api/reviews").then(r=>r.json()).then(d=>{
-  document.getElementById("reviews").innerHTML=d.map(x=>"<p>"+x.text+"</p>").join("");
-});
+  <!-- Avis clients -->
+  <div>
+    <h3>🗣️ Vos avis</h3>
+    <p style="color:#555;margin-bottom:10px;">
+      Partagez votre expérience au Nid des Alpes. Votre avis aide les futurs voyageurs à se projeter dans l’ambiance du chalet.
+    </p>
 
-function sendReview(){
-  fetch("/api/reviews",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-    name:document.getElementById("name").value,
-    text:document.getElementById("text").value
-  })});
-}
+    <div id="reviews"
+      style="margin-bottom:20px;background:#f8f8f8;padding:15px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    </div>
 
-function sendMsg(){
-  fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-    message:document.getElementById("msg").value
-  })}).then(r=>r.json()).then(d=>{
-    document.getElementById("chat").innerText=d.reply;
-  });
-}
-</script>
-<footer>
-<p><a href="cgv.html" target="_blank">Conditions Générales de Vente</a></p>
-<p>Contact : lenidsavoyard@gmail.com</p>
-</footer>
+    <input id="name" placeholder="Votre prénom" style="margin-bottom:10px">
+    <textarea id="text" placeholder="Votre avis..." style="height:90px;margin-bottom:10px"></textarea>
 
-<a href="reservation.html" class="btn-reserver">Réserver</a>
+    <button type="button" onclick="sendReview()"
+      style="background:#2f6b3a;color:white;border:none;padding:10px 20px;border-radius:25px;font-weight:bold;cursor:pointer;">
+      Envoyer mon avis
+    </button>
+  </div>
 
+  <!-- Chat IA -->
+  <div style="margin-top:40px">
+    <h3>📨 Chat en direct</h3>
+    <p style="color:#555;margin-bottom:10px;">
+      Une question rapide ? Envoyez-nous un message, nous vous répondons instantanément.
+    </p>
+
+    <div id="chat-box"
+      style="background:#f8f8f8;padding:15px;border-radius:10px;min-height:120px;max-height:250px;overflow-y:auto;box-shadow:0 2px 6px rgba(0,0,0,0.1);margin-bottom:10px;">
+    </div>
+
+    <input id="chat-input" placeholder="Votre message..."
+      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:10px">
+
+    <button type="button" onclick="sendAIChat()"
+      style="background:#2f6b3a;color:white;border:none;padding:10px 20px;border-radius:25px;font-weight:bold;cursor:pointer;">
+      Envoyer
+    </button>
+  </div>
+</section>
+
+</main>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-<span class="close" onclick="closeLB()">×</span>
-<span class="nav prev" onclick="nav(-1)">❮</span>
-<img id="lb-img">
-<span class="nav next" onclick="nav(1)">❯</span>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie d’images">
+  <span class="close" onclick="closeLB()" aria-label="Fermer la galerie">×</span>
+  <span class="nav prev" onclick="nav(-1)" aria-label="Image précédente">❮</span>
+  <img id="lb-img" alt="">
+  <span class="nav next" onclick="nav(1)" aria-label="Image suivante">❯</span>
 </div>
 
 <script>
-let imgs=[],idx=0;
-document.querySelectorAll('.gallery img').forEach((img,i)=>{
-  img.onclick=()=>{
-    imgs=[...img.parentElement.querySelectorAll('img')];
-    idxA=imgs.indexOf(img);
-    show();
-  }
-});
-function show(){
-  document.getElementById('lb-img').src=imgs[idx].src;
-  document.getElementById('lightbox').style.display='flex';
+/* ------------------------------
+   AVIS CLIENTS
+------------------------------ */
+fetch("/api/reviews")
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("reviews").innerHTML =
+      d.map(x => "<p style='padding:8px 0;border-bottom:1px solid #ddd'><strong>" +
+        (x.name || "Voyageur") + "</strong><br>" + x.text + "</p>").join("");
+  });
+
+function sendReview() {
+  fetch("/api/reviews", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      text: document.getElementById("text").value
+    })
+  });
 }
-function nav(d){idx=(idx+d+imgs.length)%imgs.length;show()}
-function closeLB(){document.getElementById('lightbox').style.display='none'}
-function toggle(id){
-  const el=document.getElementById(id);
-  el.style.display=el.style.display==='block'?'none':'block';
+
+/* ------------------------------
+   CHAT IA
+------------------------------ */
+function addChatMessage(text, fromUser = false) {
+  const box = document.getElementById("chat-box");
+  const div = document.createElement("div");
+  div.style.margin = "8px 0";
+  div.style.padding = "8px 12px";
+  div.style.borderRadius = "10px";
+  div.style.maxWidth = "80%";
+  div.style.background = fromUser ? "#d9e8ff" : "#eef6ee";
+  div.style.marginLeft = fromUser ? "auto" : "0";
+  div.innerText = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendAIChat() {
+  const input = document.getElementById("chat-input");
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  addChatMessage(msg, true);
+  input.value = "";
+
+  fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: msg })
+  })
+    .then(r => r.json())
+    .then(d => addChatMessage(d.reply))
+    .catch(() => addChatMessage("Je n’arrive pas à obtenir la réponse pour le moment."));
+}
+
+/* ------------------------------
+   LIGHTBOX
+------------------------------ */
+let imgs = [], idx = 0;
+document.querySelectorAll('.gallery img').forEach((img) => {
+  img.addEventListener('click', () => {
+    imgs = [...img.parentElement.querySelectorAll('img')];
+    idx = imgs.indexOf(img);
+    show();
+  });
+});
+
+function show() {
+  document.getElementById('lb-img').src = imgs[idx].src;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+
+function nav(d) {
+  idx = (idx + d + imgs.length) % imgs.length;
+  show();
+}
+
+function closeLB() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+/* ------------------------------
+   TOGGLE SECTIONS
+------------------------------ */
+function toggle(id) {
+  const el = document.getElementById(id);
+  const isVisible = el.style.display === 'block';
+  el.style.display = isVisible ? 'none' : 'block';
 }
 </script>
-<div id="chatbot">
-<button onclick="alert('Chatbot IA à venir – assistance voyageurs 24/7')">
-💬 Besoin d’aide ?
-</button>
-</div>
-<a href="/reservation.html">
-  <button>⬅️ Retour à la réservation</button>
-</a>
+
+<!-- BOUTON RÉSERVER -->
+<a href="reservation.html" class="btn-reserver">Réserver</a>
+
+<!-- FOOTER -->
+<footer style="background:#2c3e50;color:white;text-align:center;padding:35px 20px;margin-top:40px;">
+  <p style="margin:0;font-size:15px;">© Le Nid des Alpes – Brizon</p>
+  <nav aria-label="Liens légaux" style="margin-top:10px;">
+    <a href="cgv.html" style="color:white;margin:0 12px;text-decoration:none;">CGV</a>
+    <a href="confidentialite.html" style="color:white;margin:0 12px;text-decoration:none;">Politique de Confidentialité</a>
+    <a href="mentions-legales.html" style="color:white;margin:0 12px;text-decoration:none;">Mentions Légales</a>
+    <a href="cookies.html" style="color:white;margin:0 12px;text-decoration:none;">Cookies</a>
+  </nav>
+</footer>
 
 </body>
 </html>

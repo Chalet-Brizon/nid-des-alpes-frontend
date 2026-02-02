@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – Le Nid des Alpes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .admin-section {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background: #2f5d50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #24483f;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="admin-section">
+    <h2>Paramètres du logement</h2>
+
+    <form id="settingsForm">
+
+      <label>Nom du logement</label>
+      <input type="text" id="name">
+
+      <label>Description / Annonce</label>
+      <textarea id="description"></textarea>
+
+      <label>Numéro WhatsApp</label>
+      <input type="text" id="whatsapp">
+
+      <label>Code boîte à clés</label>
+      <input type="text" id="codeBoite">
+
+      <label>Lien avis</label>
+      <input type="text" id="lienAvis">
+
+      <label>Template de l’index</label>
+      <select id="templateIndex">
+        <option value="classic">Classique</option>
+        <option value="modern">Moderne</option>
+        <option value="premium">Premium</option>
+      </select>
+
+      <h3>Code promo</h3>
+
+      <label>Activer le code promo</label>
+      <input type="checkbox" id="codePromoActif">
+
+      <label>Code promo</label>
+      <input type="text" id="codePromo">
+
+      <label>Texte promo</label>
+      <textarea id="textePromo"></textarea>
+
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
